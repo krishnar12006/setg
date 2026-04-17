@@ -1,11 +1,8 @@
-#include <bits/stdc++.h>
+#include "graph.h"
 #include <iomanip>
-using namespace std;
 
-map<string, vector<string>> graph;
 map<string, int> color;
 
-// Function to get node with highest saturation
 string getMaxSaturation(set<string> &uncolored) {
     int maxSat = -1;
     string selected;
@@ -53,7 +50,6 @@ void dsatur() {
         uncolored.erase(node);
     }
 
-    // PRINT OUTPUT
     cout << "\n===== DSATUR TIMETABLE =====\n\n";
     cout << "Course   ->   Time Slot\n";
     cout << "------------------------\n";
@@ -70,10 +66,6 @@ void dsatur() {
 }
 
 int main() {
-    graph["C1"] = {"C2", "C3"};
-    graph["C2"] = {"C1", "C4"};
-    graph["C3"] = {"C1"};
-    graph["C4"] = {"C2"};
-
+    initializeGraph();
     dsatur();
 }
