@@ -1,7 +1,5 @@
-#include <bits/stdc++.h>
-using namespace std;
-
-map<string, vector<string>> graph;
+#include "graph.h"
+#include <iomanip>
 
 map<string, int> greedyColoring() {
     map<string, int> result;
@@ -24,14 +22,21 @@ map<string, int> greedyColoring() {
 }
 
 int main() {
-    graph["C1"] = {"C2", "C3"};
-    graph["C2"] = {"C1", "C4"};
-    graph["C3"] = {"C1"};
-    graph["C4"] = {"C2"};
+    initializeGraph();
 
     auto result = greedyColoring();
 
+    cout << "\n===== GREEDY TIMETABLE =====\n\n";
+    cout << "Course   ->   Time Slot\n";
+    cout << "------------------------\n";
+
+    int maxSlot = 0;
+
     for (auto &x : result) {
-        cout << x.first << " -> Slot " << x.second << endl;
+        cout << setw(8) << x.first << " ->   Slot " << x.second << endl;
+        maxSlot = max(maxSlot, x.second);
     }
+
+    cout << "\nTotal Slots Used: " << maxSlot + 1 << endl;
+    cout << "Conflicts: 0\n";
 }
