@@ -1,7 +1,6 @@
-#include <bits/stdc++.h>
-using namespace std;
+#include "graph.h"
+#include <iomanip>
 
-map<string, vector<string>> graph;
 map<string, int> color;
 
 bool isSafe(string node, int c) {
@@ -32,10 +31,7 @@ bool solve(vector<string> nodes, int m, int idx) {
 }
 
 int main() {
-    graph["C1"] = {"C2", "C3"};
-    graph["C2"] = {"C1", "C4"};
-    graph["C3"] = {"C1"};
-    graph["C4"] = {"C2"};
+    initializeGraph();
 
     vector<string> nodes;
     for (auto &x : graph)
